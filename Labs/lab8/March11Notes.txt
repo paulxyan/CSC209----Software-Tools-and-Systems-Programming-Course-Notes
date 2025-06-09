@@ -1,0 +1,52 @@
+use & to run a process in the backgrand
+
+different commands
+
+kill -INT 3850
+kill -INT 3850 
+
+
+
+
+ps aux | grep greeting 
+
+ctrl z suspends the program
+
+void sing(int sig) {
+
+    printf("Happy birthday to you, \n");
+    printf("Happy birthday to you, \n");
+
+
+}
+
+int main(int argc, char **argv) }
+
+    //install signal handler
+    struct sigaction sa;
+
+    name = argv[1];
+
+    sa.sa_handler = sing;
+    sa.sa_flags = 0;
+    sigemptyset(&sa.sa_mask);
+    sigaddset(&sa.sa_mask, SIGINT);
+
+    sigaction(SIGUSR1, &sa, NULL);
+    for (;;) {
+
+        printf("Go away, I'm studying\n");
+        sleep(6);
+
+
+    }
+
+
+
+
+}
+
+Another question, what if you overwrite an essential signal, 
+There is another signal to UNIX which cant be changed 
+
+kill -KILL 4224
