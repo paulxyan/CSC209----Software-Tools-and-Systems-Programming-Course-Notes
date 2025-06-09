@@ -1,0 +1,9 @@
+#Testing removing from the head of a linked list
+a 1
+a 2
+a 3
+a 4
+a 5 
+r 5
+p
+g

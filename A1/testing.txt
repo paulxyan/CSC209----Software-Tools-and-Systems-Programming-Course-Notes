@@ -1,0 +1,133 @@
+Testing for error:
+
+
+Test 1: File cannot be found for get_data. In this case we pass the required 3 parameters choosing arbitrary data blocks and size, for this example 3 and 4 respectively; and after we choose a file path which does not exist. 
+
+./compute_parity 3 4 example.txt
+
+Expected output:
+Error reading data from file
+
+Test 2: Testing get_data on with files that have lines shorter than block_size, for example in the text file Test1.txt
+We expect the padding of null terminator '\0' in place of the missing characters and to calculate as usual.
+
+./compute_parity 3 7 Test1.txt
+Expected output (accounting for extra newline character)
+Data blocks:
+this
+
+is a
+
+test
+
+Parity block:
+69 7e 3a 66 20 0a 00
+
+Test3: Testing get_data where test file has more lines than needed for the parameter data blocks passed in. For this we expect the program to handle this edge case and run as normal without any errors
+
+./compute_parity 2 1 Test1.txt
+
+expected output:
+Data blocks:
+t
+i
+Parity block:
+1d
+
+
+for compute_parity function:
+
+Test 4: Testing computing_parity with only 1 block, expecting the parity block to contain the same elements as the first, block size set to a reasonable argument such as 5 on quotes.txt expecting normal output
+./compute_parity 1 5 quotes.txt
+
+expected output:
+
+Data blocks:
+"Huma
+Parity block:
+22 48 75 6d 61
+
+Test 5: Test computing_parity for general case with num blocks 4, block size equal to 7 and the purpose is to test with the most general case, still using quotes.txt
+./compute_parity 6 7 quotes.txt
+
+expected output:
+Data blocks:
+"Humans
+"Comput
+"Comput
+"If deb
+Parity block:
+00 01 13 4d 05 0b 11 
+
+Test 6: Testing computing_parity on edgecase where all the blocks contain the same characters at the same position, leading to parity_block of 0, this is tested on Test2.txt
+
+ ./compute_parity 4 7 Test2.txt
+
+Data blocks:
+Conda
+
+Conda
+
+Conda
+
+Conda
+
+Parity block:
+00 00 00 00 00 00 00
+
+3 Test Cases for restore_block:
+
+Test 7: Testing general case for simple blocks of data for restore_block, using text file Text3.txt expecting block num 2 to be returned after it is deleted
+
+./restore_block 4 5 Test3.txt 2
+
+Expected Output:
+
+Data before block 2 is deleted
+Roses
+Viole
+This
+If it
+
+Data after block 2 is deleted
+Roses
+Viole
+
+If it
+
+Reconstructed block 2:This
+
+Test 8: Testing restore_block to recover identical data block selecting line 3, expecting to get the identical line of text back from other lines in the file. Calling generic block num and block length which runs without problems. Calling program on Test4.txt file.
+
+./restore_block 4 4 Test4.txt 3
+
+Expected Output:
+
+Data before block 2 is deleted
+3333
+3333
+3333
+3333
+
+Data after block 2 is deleted
+3333
+3333
+
+3333
+
+Reconstructed block 2:3333
+
+Test 9: Testing restore_block to recover data block from an array of only 1 data block, making sure of basic functionality of XOR operator works, expecting the single line itself to be returned since parity block will be unchanged. Chose generic block_size value for this test controlling for this aspect.
+
+./restore_block 1 5 Test4.txt 0
+
+Expected Value:
+Data before block 0 is deleted
+33333
+
+Data after block 0 is deleted
+
+
+Reconstructed block 0:33333
+
+

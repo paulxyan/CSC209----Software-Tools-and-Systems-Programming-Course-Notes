@@ -1,0 +1,14 @@
+#create first level of directories under root
+a A 
+a B
+a C
+
+a subA A
+a subB B
+a subC C
+
+r subA A
+
+p 
+
+g

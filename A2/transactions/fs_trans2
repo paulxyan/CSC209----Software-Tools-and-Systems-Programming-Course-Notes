@@ -1,0 +1,11 @@
+# Step 1: Create two node sunder root
+a A
+a B
+#Step 2: Add a subdirectory under A
+a subA A
+#Step 3: Create a hard link from A/subA to B
+h subA A B
+#Step 4: remove subA from A
+r subA A
+p
+g

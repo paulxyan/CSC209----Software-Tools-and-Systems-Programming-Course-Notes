@@ -1,0 +1,88 @@
+February 28, 2025
+
+Test Case 1: Calling mark_and_sweep() on a linked list after we have deleted all its nodes
+
+Implementation: In transaction directory I made a file called list_trans2,
+inputting instructions to add 5 elements to a new linked list and then deleting them one-by-one to create an empty
+linked list, the garbage collector should then free the memory locations of thise 5 nodes
+
+Command: ./do_list transactions/list_trans2
+
+Expected printed output:
+
+	Mark_and_sweep running
+	Chunks freed this pass: 5
+	Chunks still allocated: 0
+
+Test Case 2: Calling mark_and_sweep() on a non-empty linked list
+
+Implementation: In the transaction directory I created another file called list_trans3,
+the instructed commands are to only append 6 random elements to a new linked list only this time do
+not remove any elements, and tests the garbage collector for not freeing any of the memory locations.
+
+Command. ./do_list transactions/list_trans3
+
+Expected printed output at the bottom of gc.log file:
+
+	Mark_and_sweep running
+	Chunks freed this pass: 0
+	Chunks still allocated: 6
+
+Test Case 3: Removing Only The Head Before Calling
+
+Implementation: Make a new transaction file called list_trans4, and in it we are going to append 4 elements and remove
+the most recently added element since that is the head. We are going to check if the garbage collector only frees the head and the other nodes memory address remain unmodified.
+This is to ensure that mark_and_sweep() can accurately change files.
+
+Command. ./do_list transactions/list_trans4
+
+Expected printed output at the bottom of gc.log file:
+
+	Mark_and_sweep running
+	Chunks freed this pass: 1
+	Chunks still allocated: 5
+
+
+File Structure Tree Tests
+
+Test Case 4: Testing Mark_and_Sweep() on an unchanged fstree with a hard link inside
+
+Implementation: To test to make sure if mark sweep function accounts properly for hard links, we create
+a simple transaction file to contain commands to create a tree with 2 levels; after that we have one child node be referenced by more than one parent,
+and afterwards we remove the link between the first parent and its child and call mark_and_sweep() to check if the child is left unchanged.
+
+Command: ./do_fstree transactions/fs_trans2
+
+Expected printed output in gc.log file:
+
+	Mark_and_sweep running
+	Chunks freed this pass: 1	Note: The one chunk getting freed is the link between the old parent and child when 
+			 	      its being removed
+	Chunks still allocated: 11
+
+Test Case 5: General test case, remove one subdirecty from file system tree
+
+Implementation: To test for the general case for a tree strucutre, we create another transaction file
+which creates basic fstree with 2 levels and remove one subdirectory without a hard link, check if we freed
+correct amount of memory.
+
+Command: ./do_fstree transactions/fs_trans3
+
+Expected printed output in gc.log file:
+
+	Mark_and_sweep running
+	Chunks freed this pass: 3       Note: This correctly accounts for the freeing of the
+				 node itself, the nodes name, and the link of the node respectively
+	Chunks still allocated: 17
+
+Test Case 6: Removing a node which does not exist
+
+Implementation: Again, we crate another transaction file called fs_trans4 which created a simple fstree with 1 level from root which contains 3 nodes, then removing a node which does not exist and ensuring that the mark_and_sweep() function does not free any memory and most importantly , does not crash the program which is why we are checking
+for this test case
+
+Command: ./do_fstree transactions/fs_trans4
+
+Expected printed output in gc.log file: 
+
+	Chunks freed this pass: 0 # Chunks being freed remain unchanged
+	Chunks still allocated: 11

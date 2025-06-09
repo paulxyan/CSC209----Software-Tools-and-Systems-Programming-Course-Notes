@@ -1,0 +1,14 @@
+#add 5 nodes and delete all 5
+#should be 5 nodes to free and 0 reachable written to the log file
+a 1
+a 2 
+a 3 
+a 4 
+a 5
+r 1 
+r 2
+r 3 
+r 4 
+r 5
+p
+g
