@@ -12,39 +12,41 @@ The goal of this assignment is to understand manual memory management in C and s
 
 ## 📂 Repository Structure
 
-├── README.md # High-level project overview, instructions, and usage guide
-├── Makefile # Automates building and running programs
-├── docs/
-│ ├── CSC209_Assignment2_Instructions.pdf # Assignment instructions
-│ └── design_notes.md # (Optional) Design notes for employers and graders
-├── src/
-│ ├── do_list.c # Linked list driver
-│ ├── do_fstree.c # Fstree driver
-│ ├── mktrans.c # Transaction generator
-│ ├── list.c # Linked list implementation
-│ ├── list.h # Linked list header
-│ ├── fstree.c # Fstree implementation
-│ ├── fstree.h # Fstree header
-│ ├── gc.c # Core garbage collection implementation
-│ ├── gc.h # GC header file
-│ ├── gc_list.c # Linked-list marking logic
-│ ├── gc_fstree.c # Fstree marking logic
-├── include/ # Optional: all headers stored here
-│ ├── gc.h
-│ ├── list.h
-│ ├── fstree.h
-├── tests/
-│ ├── testing.txt # Descriptions of custom test cases
-│ ├── transactions/ # Input transaction files for do_list/do_fstree
-│ │ ├── list_trans1
-│ │ ├── list_trans2
-│ │ ├── fs_trans1
-│ │ ├── fs_trans2
-│ └── valgrind_logs/ # Memory-leak reports from Valgrind (optional)
-└── logs/
-├── gc.log # Output log from garbage collector runs
 
----
+
+```plaintext
+CSC209-A2-Garbage-Collector/
+├── README.md                         # High-level project overview & instructions
+├── Makefile                         # Automates building and running programs
+├── docs/                            # Documentation and references
+│   ├── CSC209_Assignment2_Instructions.pdf
+│   └── design_notes.md             # (Optional) Design explanation for employers & graders
+├── src/                             # Source code implementation
+│   ├── do_list.c                   # Linked list driver
+│   ├── do_fstree.c                 # Fstree driver
+│   ├── mktrans.c                   # Transaction generator
+│   ├── list.c                      # Linked list implementation
+│   ├── list.h                      # Linked list header
+│   ├── fstree.c                    # Fstree implementation
+│   ├── fstree.h                    # Fstree header
+│   ├── gc.c                        # Core garbage collector implementation
+│   ├── gc.h                        # Garbage collector header
+│   ├── gc_list.c                   # Marking function for linked list
+│   └── gc_fstree.c                 # Marking function for fstree
+├── include/                        # (Optional) Separate folder for headers
+│   ├── gc.h
+│   ├── list.h
+│   └── fstree.h
+├── tests/                          # Custom tests and transaction inputs
+│   ├── testing.txt                # Descriptions of custom test cases
+│   ├── transactions/             # Transaction files for do_list & do_fstree
+│   │   ├── list_trans1
+│   │   ├── list_trans2
+│   │   ├── fs_trans1
+│   │   └── fs_trans2
+│   └── valgrind_logs/            # (Optional) Memory-leak reports from Valgrind
+└── logs/                          # Output logs
+    └── gc.log                    # Log of garbage collection activity
 
 ## 🛠️ Building the Project
 
