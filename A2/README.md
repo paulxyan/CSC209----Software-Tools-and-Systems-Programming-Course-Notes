@@ -14,7 +14,7 @@ The goal of this assignment is to understand manual memory management in C and s
 
 
 
-```plaintext
+
 CSC209-A2-Garbage-Collector/
 ├── README.md                         # High-level project overview & instructions
 ├── Makefile                         # Automates building and running programs
