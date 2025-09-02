@@ -10,7 +10,7 @@ The goal of this assignment is to understand manual memory management in C and s
 
 ---
 
-## 📂 Repository Structure
+# 📂 Repository Structure
 
 
 
