@@ -6,7 +6,7 @@ This project implements a RAID Level 4 Simulator in C, designed to simulate a st
 
 ## 📂 Repository Structure
 
-```plaintext
+
 CSC209-A3-RAID-Simulator/
 ├── README.md                          # High-level project overview & usage guide
 ├── Makefile                           # Automates compilation & cleanup
