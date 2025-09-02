@@ -48,6 +48,7 @@ CSC209-A2-Garbage-Collector/
 └── logs/                          # Output logs
     └── gc.log                    # Log of garbage collection activity
 
+''
 ## 🛠️ Building the Project
 
 The provided `Makefile` handles compilation for you.
