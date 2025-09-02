@@ -4,6 +4,8 @@ This project implements a RAID Level 4 Simulator in C, designed to simulate a st
 
 ---
 
+```plaintext
+
 ## 📂 Repository Structure
 
 
